@@ -1,63 +1,55 @@
+// Class Induk
 class Mahasiswa {
-  constructor(nama, nim, jurusan, angkatan, ipk) {
-    this.nama = nama; 
-    this.nim = nim;
-    this.jurusan = jurusan;
-    this.angkatan = angkatan;
-    this.ipk = ipk;
-  }
+    // Attribute (5 atribut)
+    String nama;
+    String nim;
+    String jurusan;
+    int angkatan;
+    double ipk;
 
-  displayInfo() {
-    console.log(`Mahasiswa: ${this.nama} ${this.nim} (${this.jurusan} ${this.angkatan} ${this.ipk})`);
-  }
+    // Constructor
+    Mahasiswa(String nama, String nim, String jurusan, int angkatan, double ipk) {
+        this.nama = nama;
+        this.nim = nim;
+        this.jurusan = jurusan;
+        this.angkatan = angkatan;
+        this.ipk = ipk;
+    }
+
+    // Method 1: tampilkan data
+    void tampilkanData() {
+        System.out.println("Nama     : " + nama);
+        System.out.println("NIM      : " + nim);
+        System.out.println("Jurusan  : " + jurusan);
+        System.out.println("Angkatan : " + angkatan);
+        System.out.println("IPK      : " + ipk);
+    }
+
+    // Method 2: update IPK
+    void updateIPK(double ipkBaru) {
+        this.ipk = ipkBaru;
+        System.out.println("IPK " + nama + " diperbarui menjadi: " + ipk);
+    }
 }
 
-const mhs1 = new Mahasiswa('Kian', '20240001', 'Informatika', '2024', '3.80'); 
-const mhs2 = new Mahasiswa('Junia', '20240002', 'Informatika', '2024', '3.90');
-const mhs3 = new Mahasiswa('Rudi', '20240003', 'Informatika', '2024', '3.70');
-
-mhs1.displayInfo(); 
-mhs2.displayInfo(); 
-mhs3.displayInfo();
-
-class MahasiswaAktif {
-  constructor(status) {
-    this.status = status;
-  }
-}
-
+// Class Anak 1
 class MahasiswaAktif extends Mahasiswa {
-  constructor(nama, nim, jurusan, angkatan, ipk) {
-    super('Mahasiswa'); 
-    this.nama = nama;  
-    this.nim = nim;
-    this.jurusan = jurusan;
-    this.angkatan = angkatan;
-    this.ipk = ipk;
-  }
+    String status;
+
+    MahasiswaAktif(String nama, String nim, String jurusan, int angkatan, double ipk, String status) {
+        super(nama, nim, jurusan, angkatan, ipk);
+        this.status = status;
+    }
+
+    // Method 3
+    void tampilkanStatus() {
+        System.out.println("Status   : " + status);
+    }
 }
 
+// Class Anak 2
 class MahasiswaAlumni extends Mahasiswa {
-  constructor(nama, nim, jurusan, angkatan, ipk, tahunLulus, pekerjaan) {
-    super(nama, nim, jurusan, angkatan, ipk);
-    this.tahunLulus = tahunLulus;
-    this.pekerjaan = pekerjaan;
-  }
+    int tahunLulus;
 
-tampilkanAlumni() {
-    console.log(
-      `${this.nama} lulus tahun ${this.tahunLulus} dan sekarang bekerja sebagai ${this.pekerjaan}.`
-    );
-  }
-}
-
-const mhs1 = new MahasiswaAktif("Kian", "20240001", "Informatika", 2024, 3.8, "Aktif");
-const mhs2 = new MahasiswaAlumni("Junia", "20200002", "Informatika", 2020, 3.7, 2024, "Software Engineer");
-
-mhs1.displayInfo();
-mhs1.tampilkanStatus();
-
-console.log("-----");
-
-mhs2.displayInfo();
-mhs2.tampilkanAlumni();
+    MahasiswaAlumni(String nama, String nim, String jurusan, int angkatan, double ipk, int tahunLulus) {
+        super(nama, nim, jurusan, angkatan, ipk);
